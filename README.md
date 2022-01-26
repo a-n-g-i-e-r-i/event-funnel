@@ -8,7 +8,7 @@ An Express server which receives and selectively filters webhook attendance even
 
 1. The user starts or joins a **`Zoom Meeting`**.
 1. The **`Zoom JWT App`** triggers a **`Participant/host joined meeting`** event to be sent to the **`Event Notification Endpoint URL`**.
-1. The server processes the request, checking for the correct **`Verification Token`** and responds with a `status 403` if incorrect.
+1. The server processes the request, checking for the correct **`Verification Token`** (if incorrect responds `status 403`) and `event` type (if incorrect responds `status 400`).
 1. If correct, the server sends a `POST` request to the **`Google Sheets API`** to append a new row with the parsed data from the **`Participant/host joined meeting`** event.
 
 ## Development
