@@ -6,7 +6,11 @@ const { AuthenticationFailedError } = require("./customErrors");
 
 async function appendRowToGSheet(meetingId, participantEmail, joinTime) {
   const auth = new google.auth.GoogleAuth({
-    keyFile: path.join(__dirname, config.GOOGLE_APPLICATION_CREDENTIALS),
+    credentials: {
+      client_email: config.GOOGLE_CLIENT_EMAIL,
+      private_key: config.GOOGLE_PRIVATE_KEY,
+      type: config.GOOGLE_ACCOUNT_TYPE,
+    },
     scopes: [
       "https://www.googleapis.com/auth/drive",
       "https://www.googleapis.com/auth/drive.file",
@@ -31,21 +35,6 @@ async function appendRowToGSheet(meetingId, participantEmail, joinTime) {
   });
   console.log(res.data);
   return res.data;
-}
-
-async function authorize() {
-  const auth = new google.auth.GoogleAuth({
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-  });
-
-  const authClient = await auth.fromAPIKey(config.GOOGLE_SHEETS_API_KEY);
-  google.options({ auth: authClient });
-
-  if (authClient == null) {
-    throw new AuthenticationFailedError("AUTHENTICATION FAILED");
-  }
-
-  return authClient;
 }
 
 module.exports = {
