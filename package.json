@@ -4,9 +4,14 @@
   "description": "An Express server which receives and selectively filters webhook attendance events from a Zoom JWT App, and then appends parsed data as a row in a Google Sheet.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "https://github.com/a-n-g-i-e-r-i",
+  "license": "MIT",
+  "engines": {
+    "node": "17.2.0"
+  },
   "dependencies": {
     "@google-cloud/local-auth": "^1.0.1",
     "body-parser": "^1.19.1",
