@@ -42,14 +42,13 @@ app.post("/", bodyParser.raw({ type: "application/json" }), (req, res) => {
     } else {
       try {
         appendRowToGSheet(meetingId, joinTime, participantEmail);
-        res.send("SUCCESS");
+        res.status(200).send("SUCCESS");
         console.log(
           `\nSUCCESS: PARTICIPANT DATA APPENDED TO GOOGLE SHEET:\n
         MEETING ID: ${meetingId}\n
         PARTICIPANT EMAIL: ${participantEmail}\n
         JOIN TIME: ${joinTime}`
         );
-        res.status(200);
       } catch (e) {
         throw e;
       }
@@ -57,7 +56,7 @@ app.post("/", bodyParser.raw({ type: "application/json" }), (req, res) => {
   } catch (e) {
     if (e instanceof UnauthorizedRequestError) {
       const m = `FORBIDDEN: ${e.message}`;
-      res.status(403).end(m);
+      res.status(403).send(m);
       console.log(m);
     } else if (e instanceof UnprocessableEntityError) {
       const m = `UNPROCESSABLE ENTITY: ${e.message}`;
