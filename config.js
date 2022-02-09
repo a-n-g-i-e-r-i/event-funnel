@@ -5,7 +5,7 @@ dotenv.config();
 const env = process.env.NODE_ENV || process.env.DEVELOPMENT;
 let googlePrivateKey;
 
-if (env === process.env.DEVELOPMENT) {
+if (env === process.env.DEVELOPMENT || env === process.env.TEST) {
   googlePrivateKey = process.env.GOOGLE_PRIVATE_KEY;
 } else {
   googlePrivateKey = JSON.parse(process.env.GOOGLE_PRIVATE_KEY);
