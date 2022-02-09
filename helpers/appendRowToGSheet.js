@@ -2,7 +2,6 @@
 const { google } = require("googleapis");
 const path = require("path");
 const config = require("../config.js");
-const { AuthenticationFailedError } = require("./customErrors");
 
 async function appendRowToGSheet(meetingId, participantEmail, joinTime) {
   const auth = new google.auth.GoogleAuth({
@@ -17,6 +16,7 @@ async function appendRowToGSheet(meetingId, participantEmail, joinTime) {
       "https://www.googleapis.com/auth/spreadsheets",
     ],
   });
+
   const client = await auth.getClient();
 
   const sheets = google.sheets({
