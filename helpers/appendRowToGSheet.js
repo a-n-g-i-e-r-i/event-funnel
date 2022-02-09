@@ -1,9 +1,8 @@
 "use strict";
 const { google } = require("googleapis");
-const path = require("path");
 const config = require("../config.js");
 
-async function appendRowToGSheet(meetingId, participantEmail, joinTime) {
+const appendRowToGSheet = async (meetingId, participantEmail, joinTime) => {
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: config.GOOGLE_CLIENT_EMAIL,
@@ -35,7 +34,7 @@ async function appendRowToGSheet(meetingId, participantEmail, joinTime) {
   });
   console.log(res.data);
   return res.data;
-}
+};
 
 module.exports = {
   appendRowToGSheet,
