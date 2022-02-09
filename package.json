@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "author": "https://github.com/a-n-g-i-e-r-i",
   "license": "MIT",
@@ -18,7 +18,10 @@
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "googleapis": "^92.0.0",
-    "path": "^0.12.7",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1",
     "supertest": "^6.2.2"
   }
 }
