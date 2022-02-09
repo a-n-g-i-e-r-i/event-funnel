@@ -1,12 +1,11 @@
 {
-  "type": "commonjs",
   "name": "eventfunnel",
   "version": "1.0.0",
   "description": "An Express server which receives and selectively filters webhook events from a Zoom JWT App, and then appends parsed data as a row in a Google Sheet.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "https://github.com/a-n-g-i-e-r-i",
   "license": "MIT",
