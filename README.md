@@ -1,8 +1,8 @@
-# Attendance Tracker
+# Event Funnel
 
 ## Description
 
-An Express server which receives and selectively filters webhook attendance events from a Zoom JWT App, and then appends parsed data as a row in a Google Sheet.
+An Express server which receives and selectively filters webhook events from a Zoom JWT App, and then appends parsed data as a row in a Google Sheet.
 
 ### Detailed Flow
 
