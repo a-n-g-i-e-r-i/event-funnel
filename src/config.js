@@ -16,7 +16,7 @@ if (env === process.env.DEVELOPMENT || env === process.env.TEST) {
 }
 
 module.exports = {
-  LOGGER: new winston.Logger({
+  LOGGER: winston.createLogger({
     transports: [new winston.transports.Console({ level: logLevel })],
   }),
   PORT: process.env.PORT,
