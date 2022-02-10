@@ -1,4 +1,4 @@
-const dotenv = require("dotenv");
+const dotenv = require('dotenv');
 
 dotenv.config();
 
@@ -19,6 +19,6 @@ module.exports = {
   GOOGLE_CLIENT_EMAIL: process.env.GOOGLE_CLIENT_EMAIL,
   GOOGLE_ACCOUNT_TYPE: process.env.GOOGLE_ACCOUNT_TYPE,
   GOOGLE_PRIVATE_KEY: googlePrivateKey,
-  ZOOM_EVENTS: process.env.ZOOM_EVENTS.split(","),
-  MEETING_IDS: process.env.MEETING_IDS.split(","),
+  ZOOM_EVENTS: process.env.ZOOM_EVENTS.split(','),
+  MEETING_IDS: process.env.MEETING_IDS.split(','),
 };
