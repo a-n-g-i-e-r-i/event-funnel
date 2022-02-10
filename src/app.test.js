@@ -57,4 +57,83 @@ describe('POST /', () => {
       expect(appendRowToGSheet).toHaveBeenCalledTimes(1);
     });
   });
+
+  // describe("when request body is null or undefined", () => {
+  //   // body = JSON.parse(req.body); <-- null/undefined
+  //   // meetingInfo = body.payload.object;
+  //   // meetingId = meetingInfo.id;
+  //   // participantEmail = meetingInfo.participant.email;
+  //   // joinTime = meetingInfo.participant.join_time;
+  //   // send BAD REQUEST 400
+  // });
+
+  // describe("when request body object is null/undefined", () => {
+  //   // body = JSON.parse(req.body);
+  //   // meetingInfo = body.payload.object; <-- null/undefined
+  //   // meetingId = meetingInfo.id;
+  //   // participantEmail = meetingInfo.participant.email;
+  //   // joinTime = meetingInfo.participant.join_time;
+  //   // send BAD REQUEST 400
+  // });
+
+  // describe("when meetingId is null/undefined", () => {
+  //   // body = JSON.parse(req.body);
+  //   // meetingInfo = body.payload.object;
+  //   // meetingId = meetingInfo.id; <-- null/undefined
+  //   // participantEmail = meetingInfo.participant.email;
+  //   // joinTime = meetingInfo.participant.join_time;
+  //   // send BAD REQUEST 400
+  // });
+
+  // describe("when participantEmail is null/undefined", () => {
+  //   // body = JSON.parse(req.body);
+  //   // meetingInfo = body.payload.object;
+  //   // meetingId = meetingInfo.id;
+  //   // participantEmail = meetingInfo.participant.email; <-- null/undefined
+  //   // joinTime = meetingInfo.participant.join_time;
+  //   // send BAD REQUEST 400
+  // });
+
+  // describe("when joinTime is null/undefined", () => {
+  //   // body = JSON.parse(req.body);
+  //   // meetingInfo = body.payload.object;
+  //   // meetingId = meetingInfo.id;
+  //   // participantEmail = meetingInfo.participant.email;
+  //   // joinTime = meetingInfo.participant.join_time; <-- null/undefined
+  //   // send BAD REQUEST 400
+  // });
+
+  // describe("when ZOOM_EVENTS includes event", () => {
+  //   // should appendRowToGSheet (mock this)
+  //   // send SUCCESS 200
+  // });
+
+  // describe("when ZOOM_EVENTS does not include event", () => {
+  //   // throw new UnprocessableEntityError(
+  //   //   `EVENT TYPE IS NOT SUPPORTED: ${body.event}`
+  //   // );
+  //   // send UNPROCESSABLE ENTITY 422
+  // });
+
+  // describe("when MEETING_IDS includes event meeting_id", () => {
+  //   // should appendRowToGSheet (mock this)
+  //   // send SUCCESS 200
+  // });
+
+  // describe("when MEETING_IDS does not include event meeting_id", () => {
+  //   // throw new UnprocessableEntityError(
+  //   //   `MEETING ID IS NOT SUPPORTED: ${meetingId}`
+  //   // );
+  //   // send UNPROCESSABLE ENTITY 422
+  // });
+
+  // describe("when request auth header equals ZOOM_VERIFICATION_TOKEN", () => {
+  //   // should appendRowToGSheet (mock this)
+  //   // send SUCCESS 200
+  // });
+
+  // describe("when request auth header does not equal ZOOM_VERIFICATION_TOKEN", () => {
+  //   // throw new UnauthorizedRequestError("UNAUTHORIZED POST REQUEST");
+  //   // send FORBIDDEN 403
+  // });
 });
