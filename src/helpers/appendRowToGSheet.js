@@ -34,7 +34,12 @@ const appendRowToGSheet = async (meetingId, participantEmail, joinTime) => {
       values: [[meetingId, participantEmail, joinTime]],
     },
   });
-  logger.info(res.data);
+  logger.info(
+    `\nSUCCESS: PARTICIPANT DATA APPENDED TO GOOGLE SHEET:\n
+    MEETING ID: ${meetingId}\n
+    PARTICIPANT EMAIL: ${participantEmail}\n
+    JOIN TIME: ${joinTime}`,
+  );
   return res.data;
 };
 

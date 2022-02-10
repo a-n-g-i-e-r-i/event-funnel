@@ -43,12 +43,6 @@ app.post('/', bodyParser.raw({ type: 'application/json' }), (req, res) => {
     } else {
       appendRowToGSheet(meetingId, joinTime, participantEmail);
       res.status(200).send('SUCCESS');
-      logger.info(
-        `\nSUCCESS: PARTICIPANT DATA APPENDED TO GOOGLE SHEET:\n
-        MEETING ID: ${meetingId}\n
-        PARTICIPANT EMAIL: ${participantEmail}\n
-        JOIN TIME: ${joinTime}`,
-      );
     }
   } catch (e) {
     if (e instanceof UnauthorizedRequestError) {
