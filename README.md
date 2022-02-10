@@ -1,5 +1,7 @@
 # Event Funnel
 
+[![HitCount](http://hits.dwyl.com/a-n-g-i-e-r-i/event-funnel.svg?style=flat)](http://hits.dwyl.com/a-n-g-i-e-r-i/event-funnel)
+
 ## Description
 
 An Express server which receives and selectively filters webhook events from a Zoom JWT App, and then appends parsed data as a row in a Google Sheet.
