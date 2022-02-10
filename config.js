@@ -1,17 +1,24 @@
 const dotenv = require('dotenv');
+const winston = require('winston');
 
 dotenv.config();
 
 const env = process.env.NODE_ENV || process.env.DEVELOPMENT;
 let googlePrivateKey;
+let logLevel;
 
 if (env === process.env.DEVELOPMENT || env === process.env.TEST) {
   googlePrivateKey = process.env.GOOGLE_PRIVATE_KEY;
+  logLevel = 'silly';
 } else {
   googlePrivateKey = JSON.parse(process.env.GOOGLE_PRIVATE_KEY);
+  logLevel = 'info';
 }
 
 module.exports = {
+  LOGGER: new winston.Logger({
+    transports: [new winston.transports.Console({ level: logLevel })],
+  }),
   PORT: process.env.PORT,
   ZOOM_VERIFICATION_TOKEN: process.env.ZOOM_VERIFICATION_TOKEN,
   GOOGLE_SHEETS_API_KEY: process.env.GOOGLE_SHEETS_API_KEY,

@@ -1,7 +1,8 @@
-const { app } = require('./app');
 const request = require('supertest');
+const { app } = require('./app');
 const config = require('./config');
 const { appendRowToGSheet } = require('./helpers/appendRowToGSheet');
+
 jest.mock('./helpers/appendRowToGSheet', () => ({
   appendRowToGSheet: jest.fn().mockImplementation(() => {}),
 }));
