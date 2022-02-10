@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles",
+    "lint": "eslint ./*.js"
   },
   "author": "https://github.com/a-n-g-i-e-r-i",
   "license": "MIT",
@@ -21,6 +22,9 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "eslint": "^8.8.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
     "jest": "^27.5.1",
     "supertest": "^6.2.2"
   }
