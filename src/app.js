@@ -27,7 +27,7 @@ app.post('/', Validator('participantJoinedEvent'), (req, res, next) => {
   let meetingInfo = body.payload.object;
   let meetingId = meetingInfo.id;
   let participantEmail = meetingInfo.participant.email;
-  let joinTime = meetingInfo.participant.date_time;
+  let joinTime = meetingInfo.participant.join_time;
 
   try {
     if (!config.ZOOM_EVENTS.includes(`${body.event}`)) {
