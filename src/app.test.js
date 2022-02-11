@@ -31,7 +31,6 @@ let mockRec = {
         user_id: '1234567890',
         user_name: 'TestUser',
         id: 'iFxeBPYun6SAiWUzBcEkX',
-        date_time: '2021-07-13T21:44:51Z',
         join_time: '2021-07-13T21:44:51Z',
         email: 'test.user@test.com',
         registrant_id: 'abcdefghij0-klmnopq23456',
