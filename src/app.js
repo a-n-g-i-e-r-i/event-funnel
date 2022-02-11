@@ -28,7 +28,7 @@ app.post('/', bodyParser.raw({ type: 'application/json' }), (req, res) => {
     meetingInfo = body.payload.object;
     meetingId = meetingInfo.id;
     participantEmail = meetingInfo.participant.email;
-    joinTime = meetingInfo.participant.date_time;
+    joinTime = meetingInfo.participant.join_time;
 
     if (!config.ZOOM_EVENTS.includes(`${body.event}`)) {
       throw new UnprocessableEntityError(
