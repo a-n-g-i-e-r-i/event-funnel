@@ -43,6 +43,7 @@ app.post('/', bodyParser.raw({ type: 'application/json' }), (req, res) => {
     } else {
       appendRowToGSheet(meetingId, joinTime, participantEmail);
       res.status(200).send('SUCCESS');
+      logger.info(body); //! TODO REMOVE
       logger.info(
         `\nSUCCESS: PARTICIPANT DATA APPENDED TO GOOGLE SHEET:\n
         MEETING ID: ${meetingId}\n
