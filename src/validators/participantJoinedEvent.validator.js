@@ -4,7 +4,7 @@ const participant = Joi.object({
   user_id: Joi.string().required(),
   user_name: Joi.string().required(),
   id: Joi.string().required(),
-  date_time: Joi.string().required(),
+  join_time: Joi.string().required(),
   email: Joi.string().email().required(),
   registrant_id: Joi.string().required(),
   participant_user_id: Joi.string().required(),
