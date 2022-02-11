@@ -113,7 +113,7 @@ describe('POST /', () => {
     const res = await request(app)
       .post('/')
       .set(successReqHeaders)
-      .send(mockRec);
+      .send(tempMockRec);
 
     expect(res.status).toBe(422);
     expect(appendRowToGSheet).toHaveBeenCalledTimes(0);
