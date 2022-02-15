@@ -5,7 +5,8 @@
   "main": "./src/server.js",
   "scripts": {
     "start": "node ./src/server.js",
-    "test": "jest --detectOpenHandles",
+    "test": "jest --runInBand",
+    "watch": "jest --watch-all",
     "lint": "eslint ./src/*.js",
     "coverage": "c8 node ./src/*.js"
   },
