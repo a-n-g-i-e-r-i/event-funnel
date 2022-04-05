@@ -6,30 +6,30 @@ const {
   UnprocessableEntityError,
   UnauthorizedRequestError,
   InternalServerError,
+  BadRequestError,
 } = require('./helpers/customErrors');
+const Validator = require('./middlewares/Validator');
 
 const app = express();
 const logger = config.LOGGER;
 app.use(express.static('./app.js'));
+app.use(bodyParser.json());
+app.use((e, req, res, next) => {
+  res.status(e.status || 500).send(e.message);
+});
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
   res.send('REQUEST RECEIVED');
 });
 
-app.post('/', bodyParser.raw({ type: 'application/json' }), (req, res) => {
-  let body;
-  let meetingInfo;
-  let meetingId;
-  let participantEmail;
-  let joinTime;
+app.post('/', Validator('participantJoinedEvent'), (req, res, next) => {
+  let body = req.body;
+  let meetingInfo = body.payload.object;
+  let meetingId = meetingInfo.id;
+  let participantEmail = meetingInfo.participant.email;
+  let joinTime = meetingInfo.participant.join_time;
 
   try {
-    body = JSON.parse(req.body);
-    meetingInfo = body.payload.object;
-    meetingId = meetingInfo.id;
-    participantEmail = meetingInfo.participant.email;
-    joinTime = meetingInfo.participant.join_time;
-
     if (!config.ZOOM_EVENTS.includes(`${body.event}`)) {
       throw new UnprocessableEntityError(
         `EVENT TYPE IS NOT SUPPORTED: ${body.event}`,
@@ -43,30 +43,20 @@ app.post('/', bodyParser.raw({ type: 'application/json' }), (req, res) => {
     } else {
       appendRowToGSheet(meetingId, joinTime, participantEmail);
       res.status(200).send('SUCCESS');
-      logger.info(
-        `\nSUCCESS: PARTICIPANT DATA APPENDED TO GOOGLE SHEET:\n
-        MEETING ID: ${meetingId}\n
-        PARTICIPANT EMAIL: ${participantEmail}\n
-        JOIN TIME: ${joinTime}`,
-      );
     }
   } catch (e) {
     if (e instanceof UnauthorizedRequestError) {
       const m = `FORBIDDEN: ${e.message}`;
-      res.status(403).send(m);
-      logger.warn(m);
+      logger.warn(m, e.status);
+      res.status(e.status).send(m);
     } else if (e instanceof UnprocessableEntityError) {
       const m = `UNPROCESSABLE ENTITY: ${e.message}`;
-      res.status(422).send(m);
-      logger.warn(m);
-    } else if (e instanceof InternalServerError) {
-      const m = 'INTERNAL SERVER ERROR';
-      res.status(500).send(m);
-      logger.warn(m, e.message);
+      logger.warn(m, e.status);
+      res.status(e.status).send(m);
     } else {
-      const m = `BAD REQUEST: ${e.message}`;
-      res.status(400).send(m);
-      logger.warn(m);
+      logger.warn(e.message, e.status);
+      e = new InternalServerError();
+      res.status(e.status).send();
     }
   }
 });

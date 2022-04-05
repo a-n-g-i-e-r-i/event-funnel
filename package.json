@@ -5,7 +5,8 @@
   "main": "./src/server.js",
   "scripts": {
     "start": "node ./src/server.js",
-    "test": "jest --detectOpenHandles",
+    "test": "jest --runInBand",
+    "watch": "jest --watch-all",
     "lint": "eslint ./src/*.js",
     "coverage": "c8 node ./src/*.js"
   },
@@ -20,6 +21,7 @@
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "googleapis": "^92.0.0",
+    "joi": "^17.6.0",
     "path": "^0.12.7",
     "winston": "^3.5.1"
   },
@@ -28,6 +30,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
     "jest": "^27.5.1",
-    "supertest": "^6.2.2"
+    "supertest": "^6.2.2",
+    "uuid": "^8.3.2"
   }
 }
