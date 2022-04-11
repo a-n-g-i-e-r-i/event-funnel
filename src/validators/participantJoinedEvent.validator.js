@@ -12,7 +12,7 @@ const participant = Joi.object({
 
 const object = Joi.object({
   id: Joi.number().integer().required(),
-  uuid: Joi.string().uuid().required(),
+  uuid: Joi.string().required(),
   host_id: Joi.string().required(),
   topic: Joi.string().required(),
   type: Joi.number().integer().required(),
